@@ -19,7 +19,7 @@ And I enter "Doe" in the "Last Name" field
 And I enter "john.doe@example.com" in the "Email" field
 And I enter "P@ssword123" in the "Password" field
 And I click "Submit"
-Then I am redirected to the "/contactList" page
+Then I am redirected to the contact page
 ```
 
 ---
@@ -34,7 +34,7 @@ And I enter "Martin" in the "Last Name" field
 And I enter "marie-claire.martin@example.com" in the "Email" field
 And I enter "SecurePass1!" in the "Password" field
 And I click "Submit"
-Then I am redirected to the "/contactList" page
+Then I am redirected to the contact page
 ```
 
 ---
@@ -49,7 +49,7 @@ And I enter "Smith" in the "Last Name" field
 And I enter "JANE.SMITH@EXAMPLE.COM" in the "Email" field
 And I enter "ValidPass99!" in the "Password" field
 And I click "Submit"
-Then I am redirected to the "/contactList" page
+Then I am redirected to the contact page
 ```
 
 ---
@@ -64,7 +64,7 @@ And I enter "Dupont" in the "Last Name" field
 And I enter "alice.dupont@example.com" in the "Email" field
 And I enter "Abcd1234" in the "Password" field
 And I click "Submit"
-Then I am redirected to the "/contactList" page
+Then I am redirected to the contact page
 ```
 
 ---
@@ -75,7 +75,7 @@ Then I am redirected to the "/contactList" page
 ```gherkin
 Given I am on the register page
 When I click "Cancel"
-Then I am redirected to the "/" page
+Then I am redirected to the login page
 And no user is created
 ```
 
@@ -304,7 +304,7 @@ And I enter "Ñoño" in the "Last Name" field
 And I enter "jose.nono@example.com" in the "Email" field
 And I enter "Sp3c!alP@ss" in the "Password" field
 And I click "Submit"
-Then I am redirected to the "/contactList" page
+Then I am redirected to the contact page
 ```
 
 ---
@@ -364,7 +364,7 @@ When I copy "ValidPass1!" to the clipboard
 And I paste the value into the "Password" field
 And I fill in the other fields with valid data
 And I click "Submit"
-Then I am redirected to the "/contactList" page
+Then I am redirected to the contact page
 ```
 
 ---
@@ -389,7 +389,7 @@ Given I am on the register page
 And I have filled all fields with valid data
 When I rapidly double-click the "Submit" button
 Then only one user is created in the database
-And I am redirected to "/contactList" only once
+And I am redirected to contact only once
 ```
 
 ---
@@ -398,7 +398,7 @@ And I am redirected to "/contactList" only once
 **Tags:** `edge` `navigation` `ux`
 
 ```gherkin
-Given I have successfully submitted the form and I am on "/contactList"
+Given I have successfully submitted the form and I am on contact
 When I navigate back to register in the browser
 And I attempt to submit the same form again
 Then the application handles the duplicate registration attempt
@@ -441,7 +441,7 @@ And I enter "Doe" in the "Last Name" field
 And I enter "john.doe@mail.example.co.uk" in the "Email" field
 And I enter "ValidPass1!" in the "Password" field
 And I click "Submit"
-Then I am redirected to the "/contactList" page
+Then I am redirected to the contact page
 ```
 
 ---

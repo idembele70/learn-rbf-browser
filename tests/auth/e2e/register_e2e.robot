@@ -1,9 +1,9 @@
 *** Settings ***
 Library         Browser
 
-Suite Setup     Open Register Page
+Test Setup      Open Register Page
+Test Teardown    Close Register Page
 
-# Suite Teardown    Close Register Page
 Test Tags       register
 
 
@@ -14,7 +14,6 @@ ${CONTACT_LIST_PATHNAME}    contactList
 ${LOGIN_PATHNAME}           login
 ${BROWSER}                  chromium
 ${HEADLESS}                 False
-${PAGE}                     ${None}
 
 
 *** Test Cases ***
@@ -23,6 +22,7 @@ Successful Registration With All Valid Data
     [Tags]    happy    smoke
     Given I Am On The Register Page
     When I Enter "John" In The "First Name" Field
+    When I Enter "Doe" In The "Last Name" Field
     And I Enter "john.doe@example.com" In The "Email" Field
     And I Enter "P@ssword123" In The "Password" Field
     And I Click "Submit"
@@ -73,9 +73,11 @@ Cancel Button Redirects To The Login Page
 *** Keywords ***
 Open Register Page
     [Documentation]    ...
-    New Browser    browser=${BROWSER}    headless=${HEADLESS}
-    New Context    baseURL=${BASE_URL}    bypassCSP=True    clientCertificates=None    ignoreHTTPSErrors=True
-    New Page    url=${REGISTER_PATHNAME}
+    Open Browser    url=${BASE_URL}${REGISTER_PATHNAME}    browser=${BROWSER}    headless=${HEADLESS}
+
+Close Register Page
+    [Documentation]    ...
+    Close Browser    CURRENT
 
 I Am On The Register Page
     [Documentation]    ...
