@@ -16,7 +16,7 @@
 Given I am on the register page
 When I enter "John" in the "First Name" field
 And I enter "Doe" in the "Last Name" field
-And I enter "john.doe@example.com" in the "Email" field
+And I enter "john.doe@invalid.invalid" in the "Email" field
 And I enter "P@ssword123" in the "Password" field
 And I click "Submit"
 Then I am redirected to the contact page
@@ -46,7 +46,7 @@ Then I am redirected to the contact page
 Given I am on the register page
 When I enter "Jane" in the "First Name" field
 And I enter "Smith" in the "Last Name" field
-And I enter "JANE.SMITH@EXAMPLE.COM" in the "Email" field
+And I enter "JANE.SMITH@INVALID.INVALID" in the "Email" field
 And I enter "ValidPass99!" in the "Password" field
 And I click "Submit"
 Then I am redirected to the contact page
@@ -61,7 +61,7 @@ Then I am redirected to the contact page
 Given I am on the register page
 When I enter "Alice" in the "First Name" field
 And I enter "Dupont" in the "Last Name" field
-And I enter "alice.dupont@example.com" in the "Email" field
+And I enter "alice.dupont@invalid.invalid" in the "Email" field
 And I enter "Abcd1234" in the "Password" field
 And I click "Submit"
 Then I am redirected to the contact page

@@ -1,10 +1,10 @@
 *** Settings ***
-Library         Browser
+Library             Browser
 
-Test Setup      Open Register Page
-Test Teardown    Close Register Page
+Test Setup          Open Register Page
+Test Teardown       Close Register Page
 
-Test Tags       register
+Test Tags           register
 
 
 *** Variables ***
@@ -23,7 +23,7 @@ Successful Registration With All Valid Data
     Given I Am On The Register Page
     When I Enter "John" In The "First Name" Field
     When I Enter "Doe" In The "Last Name" Field
-    And I Enter "john.doe@example.com" In The "Email" Field
+    And I Enter "john.doe@invalid.invalid" In The "Email" Field
     And I Enter "P@ssword123" In The "Password" Field
     And I Click "Submit"
     Then I Am Redirect To The Contact Page
@@ -45,7 +45,7 @@ Registration With An Uppercase Email
     Given I Am On The Register Page
     When I Enter "Jane" In The "First Name" Field
     And I Enter "Smith" In The "Last Name" Field
-    And I Enter "JANE.SMITH@EXAMPLE.COM" In The "Email" Field
+    And I Enter "JANE.SMITH@INVALID.INVALID" In The "Email" Field
     And I Enter "ValidPass99!" In The "Password" Field
     And I Click "Submit"
     Then I Am Redirect To The Contact Page
@@ -56,7 +56,7 @@ Registration With A Password At Minimum Accepted Length
     Given I Am On The Register Page
     When I Enter "Alice" In The "First Name" Field
     And I Enter "Dupont" In The "Last Name" Field
-    And I Enter "alice.dupont@example.com" In The "Email" Field
+    And I Enter "alice.dupont@invalid.invalid" In The "Email" Field
     And I Enter "Abcd1234" In The "Password" Field
     And I Click "Submit"
     Then I Am Redirect To The Contact Page
@@ -67,7 +67,6 @@ Cancel Button Redirects To The Login Page
     Given I Am On The Register Page
     When I Click "Cancel"
     Then I Am Redirect To The Login Page
-    And No User Is Created
 
 
 *** Keywords ***
@@ -82,7 +81,7 @@ Close Register Page
 I Am On The Register Page
     [Documentation]    ...
     ${add_user_heading} =    Get Element By Role    HEADING    name=Add User
-    Get Element States    selector=${add_user_heading}    assertion_operator=equal    return_names=visible
+    Get Element States    ${add_user_heading}    contains    visible
 
 I Enter "${text}" In The "${field_name}" Field
     [Documentation]    ...
@@ -101,7 +100,3 @@ I Am Redirect To The Contact Page
 I Am Redirect To The Login Page
     [Documentation]    ...
     Get Url    should end with    assertion_expected=${LOGIN_PATHNAME}
-
-No User Is Created
-    [Documentation]    ...
-    Should Be True    0 == 0
