@@ -26,7 +26,7 @@ Successful Registration With All Valid Data
     And I Enter "john.doe@invalid.invalid" In The "Email" Field
     And I Enter "P@ssword123" In The "Password" Field
     And I Click "Submit"
-    Then I Am Redirect To The Contact Page
+    Then I Am Redirected To The Contact Page
 
 Registration With A Hyphenated First Name
     [Documentation]    ...
@@ -37,7 +37,7 @@ Registration With A Hyphenated First Name
     And I Enter "marie-claire.martin@example.com" In The "Email" Field
     And I Enter "SecurePass1!" In The "Password" Field
     And I Click "Submit"
-    I Am Redirect To The Contact Page
+    I Am Redirected To The Contact Page
 
 Registration With An Uppercase Email
     [Documentation]    ...
@@ -48,7 +48,7 @@ Registration With An Uppercase Email
     And I Enter "JANE.SMITH@INVALID.INVALID" In The "Email" Field
     And I Enter "ValidPass99!" In The "Password" Field
     And I Click "Submit"
-    Then I Am Redirect To The Contact Page
+    Then I Am Redirected To The Contact Page
 
 Registration With A Password At Minimum Accepted Length
     [Documentation]    ...
@@ -59,14 +59,14 @@ Registration With A Password At Minimum Accepted Length
     And I Enter "alice.dupont@invalid.invalid" In The "Email" Field
     And I Enter "Abcd1234" In The "Password" Field
     And I Click "Submit"
-    Then I Am Redirect To The Contact Page
+    Then I Am Redirected To The Contact Page
 
-Cancel Button Redirects To The Login Page
+Cancel Button Redirecteds To The Login Page
     [Documentation]    ...
     [Tags]    happy
     Given I Am On The Register Page
     When I Click "Cancel"
-    Then I Am Redirect To The Login Page
+    Then I Am Redirected To The Login Page
 
 
 *** Keywords ***
@@ -93,10 +93,10 @@ I Click "${label}"
     ${locator} =    Get Element By    Text    text=${label}
     Click    ${locator}
 
-I Am Redirect To The Contact Page
+I Am Redirected To The Contact Page
     [Documentation]    ...
     Get Url    should end with    assertion_expected=${CONTACT_LIST_PATHNAME}
 
-I Am Redirect To The Login Page
+I Am Redirected To The Login Page
     [Documentation]    ...
     Get Url    should end with    assertion_expected=${LOGIN_PATHNAME}
